@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
+import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 export function Hero() {
   return (
@@ -26,13 +27,23 @@ export function Hero() {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-y-4 sm:flex-row sm:gap-x-6">
-          <Link
-            href="#"
-            className="group flex h-12 w-full items-center justify-center rounded-lg bg-black px-8 text-sm font-semibold text-white transition-all hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:w-auto"
-          >
-             Commencer gratuitement
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button className="group flex h-12 w-full items-center justify-center rounded-lg bg-black px-8 text-sm font-semibold text-white transition-all hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:w-auto">
+                 Tableau de bord
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <Link
+              href="/dashboard"
+              className="group flex h-12 w-full items-center justify-center rounded-lg bg-black px-8 text-sm font-semibold text-white transition-all hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:w-auto"
+            >
+               Tableau de bord
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </SignedIn>
           <Link
             href="#"
             className="flex h-12 w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-8 text-sm font-semibold text-gray-900 transition-all hover:bg-gray-50 dark:border-gray-800 dark:bg-black dark:text-white dark:hover:bg-gray-900 sm:w-auto"

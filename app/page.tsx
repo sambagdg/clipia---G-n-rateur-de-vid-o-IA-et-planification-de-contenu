@@ -1,3 +1,4 @@
+import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
 import { Hero } from "@/components/landing/Hero";
 import { Features } from "@/components/landing/Features";
 import { Pricing } from "@/components/landing/Pricing";
@@ -22,15 +23,27 @@ export default function Home() {
             </Link>
           </nav>
           <div className="flex items-center gap-4">
-             <Link href="#" className="hidden text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white md:block">
-              Se connecter
-            </Link>
-            <Link
-              href="#"
-              className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
-            >
-              Essayer
-            </Link>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="hidden text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white md:block">
+                  Se connecter
+                </button>
+              </SignInButton>
+              <SignInButton mode="modal">
+                <button className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+                  Tableau de bord
+                </button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <Link
+                href="/dashboard"
+                className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+              >
+                Tableau de bord
+              </Link>
+              <UserButton />
+            </SignedIn>
           </div>
         </div>
       </header>
