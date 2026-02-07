@@ -20,11 +20,14 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4">Tableau de bord</h1>
-      <p>Bienvenue, {user?.firstName} !</p>
-      <div className="mt-8 p-4 border rounded-lg bg-gray-50 dark:bg-gray-900">
-        <p>Ceci est votre espace personnel.</p>
+    <div className="p-8">
+      <h1 className="text-3xl font-bold mb-4">Séries</h1>
+      <div className="mt-8 p-8 border-2 border-dashed rounded-lg bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-800 flex flex-col items-center justify-center text-center">
+        <h2 className="text-xl font-semibold mb-2">Aucune série créée</h2>
+        <p className="text-gray-500 mb-4">Commencez par créer votre première série de vidéos.</p>
+        <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition">
+          Créer une série
+        </button>
       </div>
     </div>
   );
